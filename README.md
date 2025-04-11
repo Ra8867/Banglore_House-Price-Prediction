@@ -1,31 +1,55 @@
-# 🎬 Movie Recommendation System
+🏠 Bangalore House Price Prediction
+This project predicts house prices in Bangalore based on features like location, square footage, number of bedrooms (BHK), and bathrooms using machine learning models. It covers the full pipeline from preprocessing to model training and deployment with a simple Flask web app.
 
-This is a content-based and similarity-based **Movie Recommendation System** built with **Python**, **Pandas**, and **Streamlit**. It recommends movies based on a selected movie using a precomputed similarity matrix.
+📊 Dataset
+Source: Kaggle - Bengaluru House Data
 
----
+Key columns: location, size, total_sqft, bath, price
 
-## 📌 Features
+🧹 Data Cleaning Overview
+Removed irrelevant columns and handled missing values
 
-- 🔍 Recommend top 5 similar movies based on selected movie
-- 📊 Uses cosine similarity for recommendations
-- 🧠 Model trained on movie metadata (titles, genres, etc.)
-- 🌐 Simple web interface using Streamlit
-- 💾 Data stored and loaded using Pickle
+Engineered features like bhk and price_per_sqft
 
----
+Grouped rare locations into "other"
 
-## 🚀 How it Works
+Removed outliers for more accurate modeling
 
-1. Load preprocessed movie data (`movie.pkl`)
-2. Load precomputed similarity matrix (`similarity.pkl`)
-3. When a user selects a movie, find similar movies using cosine similarity
-4. Display top 5 recommended titles on the web app
+🧠 Models Used
+Model	Description
+Linear Regression	Baseline ML model
+Lasso Regression	L1-regularized model to prevent overfit
+Ridge Regression	Final deployed model with best R² score
+✅ Best performance with Ridge Regression
+📈 Evaluation Metric: R² Score
 
----
+💻 Web App (Flask)
+Built a web interface using Flask where users can:
 
-## 📦 Requirements
+Select location
 
-Install dependencies from `requirements.txt`:
+Enter total square feet, BHK, and bathrooms
 
-```bash
-pip install -r requirements.txt
+Get the predicted house price instantly
+
+The backend uses a trained Ridge model (RidgeModel.pkl) to generate predictions.
+
+🔧 Tech Stack
+Python: Data processing & modeling
+
+Scikit-learn: ML pipeline
+
+Pandas, NumPy: Data wrangling
+
+Flask: Web app backend
+
+HTML (Jinja): Frontend template
+
+Pickle: Model serialization
+
+📌 Highlights
+End-to-end ML pipeline: preprocessing → modeling → deployment
+
+Outlier removal for more reliable predictions
+
+Interactive web UI with Flask
